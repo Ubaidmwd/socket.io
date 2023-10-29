@@ -9,6 +9,10 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("user connected");
+  setTimeout(() => {
+    // socket.send("Hello World");
+    socket.emit("message", { description: "My event description" });
+  }, 2000);
   socket.on("disconnect", function () {
     console.log("user disconnected");
   });
